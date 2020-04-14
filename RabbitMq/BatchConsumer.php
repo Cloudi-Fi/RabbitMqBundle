@@ -197,6 +197,9 @@ class BatchConsumer extends BaseAmqp implements DequeuerInterface
         } else if ($processFlag === ConsumerInterface::MSG_SINGLE_NACK_REQUEUE) {
             // NACK and requeue message to RabbitMQ
             $this->getMessageChannel($deliveryTag)->basic_nack($deliveryTag, false, true);
+        } else if ($processFlag === ConsumerInterface::MSG_NACK) {
+            // NACK and drop
+            $this->getMessageChannel($deliveryTag)->basic_nack($deliveryTag, false);
         } else if ($processFlag === ConsumerInterface::MSG_REJECT) {
             // Reject and drop
             $this->getMessageChannel($deliveryTag)->basic_reject($deliveryTag, false);

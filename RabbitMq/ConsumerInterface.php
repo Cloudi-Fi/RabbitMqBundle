@@ -15,6 +15,11 @@ interface ConsumerInterface
      * Flag single for message nack and requeue
      */
     const MSG_SINGLE_NACK_REQUEUE = 2;
+    
+    /**
+     * Flag message nack and drop
+     */
+    const MSG_NACK = 3;
 
     /**
      * Flag for reject and requeue
@@ -30,6 +35,8 @@ interface ConsumerInterface
      * Flag for consumers that wants to handle ACKs on their own
      */
     const MSG_ACK_SENT = -2;
+    
+    
 
     /**
      * @param AMQPMessage $msg The message
